@@ -1,6 +1,9 @@
 package envhelper
 
-import "os"
+import (
+	"os"
+	"strconv"
+)
 
 // get an env variable or fallback to a default value
 func GetEnv(key, fallback string) string {
@@ -10,11 +13,11 @@ func GetEnv(key, fallback string) string {
 	return fallback
 }
 
-func GetEnvAsInt(key, fallback int) int {
+func GetEnvAsInt(key string, fallback int) int {
 	if value, ok := os.LookupEnv(key); ok {
-		if val, err := strconv.ParseInt(value); err == nil {
+		if val, err := strconv.Atoi(value); err == nil {
 			return val
-		} 
+		}
 	}
 	return fallback
 }
