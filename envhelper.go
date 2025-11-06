@@ -9,3 +9,12 @@ func GetEnv(key, fallback string) string {
 	}
 	return fallback
 }
+
+func GetEnvAsInt(key, fallback int) int {
+	if value, ok := os.LookupEnv(key); ok {
+		if val, err := strconv.ParseInt(value); err == nil {
+			return val
+		} 
+	}
+	return fallback
+}
