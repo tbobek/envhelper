@@ -32,6 +32,12 @@ func TestGetEnvAsInt(t *testing.T) {
 			fallback: 2,
 			want:     5,
 		},
+		{
+			name:     "Test for env var not set",
+			key:      "TEST_ENV_VAR_NOT_SET",
+			fallback: 2,
+			want:     2,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -54,10 +60,16 @@ func TestGetEnv(t *testing.T) {
 		want     string
 	}{
 		{
-			name:     "TEST1",
+			name:     "Test for existing env var",
 			key:      testEnvVar2,
 			fallback: "value456",
 			want:     "value123",
+		},
+		{
+			name:     "Test for non-existing env var",
+			key:      "TEST_ENV_VAR_NOT_EXIST",
+			fallback: "value456",
+			want:     "value456",
 		},
 	}
 	for _, tt := range tests {
