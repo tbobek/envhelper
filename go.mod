@@ -1,3 +1,3 @@
 module github.com/tbobek/envhelper
 
-go 1.21.12
+go 1.21.10
